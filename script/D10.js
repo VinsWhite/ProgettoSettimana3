@@ -54,14 +54,14 @@ console.log("Oggetto me con la proprietà age eliminata: ", me);
   Crea del codice per aggiungere programmaticamente all'oggetto precedentemente creato un array chiamato "skills", contenente i linguaggi di programmazione che conosci.
 */
 
-me.skills = ["C", "C++", "Java", "HTML", "CSS", "JS"];
+me.skills = ["C", "C++", "Java", "HTML", "CSS", "JS"]; //aggiunge la proprietà skills all'oggetto
 console.log("Oggetto me con la proprietà skills: ", me);
 
 /* ESERCIZIO F
   Crea un pezzo di codice per aggiungere un nuovo elemento all'array "skills" contenuto nell'oggetto "me".
 */
 
-me.skills.push("PHP");
+me.skills.push("PHP"); //pusha la stringa "PHP" all'interno di me.skills
 console.log("Oggetto me con la proprietà skills modificata: ", me);
 
 
@@ -69,7 +69,7 @@ console.log("Oggetto me con la proprietà skills modificata: ", me);
   Crea un pezzo di codice per rimuovere programmaticamente l'ultimo elemento dall'array "skills" contenuto nell'oggetto "me".
 */
 
-me.skills.pop();
+me.skills.pop(); //pop elimina l'ultimo elemento
 console.log("Oggetto me con la proprietà skills modificata (eliminando l'ultimo elemento): ", me);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -81,7 +81,7 @@ console.log("Oggetto me con la proprietà skills modificata (eliminando l'ultimo
 */
 
 function dice() {
-  return Math.floor(Math.random() * (6 - 1 + 1) + 1);
+  return Math.floor(Math.random() * (6 - 1 + 1) + 1); 
 }
 
 console.log("Dado: ", dice());
@@ -92,7 +92,7 @@ console.log("Dado: ", dice());
 
 
 let whoIsBigger = (a, b) => {
-  if (a > b) {
+  if (a > b) { //semplicemente controlliamo quale num è maggiore dell'altro con un if
     return "Il primo numero " + a + " è maggiore del secondo " + b;
   } else if (a < b) {
     return "Il primo numero " + a + " è minore del secondo " + b;
@@ -109,8 +109,8 @@ console.log(whoIsBigger(3, 3));
   Es.: splitMe("I love coding") => ritorna ["I", "Love", "Coding"]
 */
 
-let splitMe = (stringa) => {
-  return stringa.split(" ");
+let splitMe = (stringa) => { 
+  return stringa.split(" "); //splittiamo la frase servendoci degli spazi
 }
 
 let s = splitMe("ciao come va?");
@@ -123,9 +123,9 @@ console.log(s);
 
 let deleteOne = (str, bool) => {
   if (bool === true) {
-    return str.substring(1);
+    return str.substring(1); //qui il substring elimina il primo carattere
   } else {
-    return str.substring(0, str.length - 1);
+    return str.substring(0, str.length - 1); //qui invece elimina l'ultimo carattere (lunghezza della stringa -1)
   }
 }
 
@@ -140,7 +140,7 @@ console.log(elimina);
 */
 
 let onlyLetters = (stringaA) => {
-  let numRimossi = stringaA.replace(/[0-9]/g, '');
+  let numRimossi = stringaA.replace(/[0-9]/g, '');  //ritorniamo la frase senza numeri quindi nessuno "carattere da 0 a 9"
   return numRimossi;
 }
 
@@ -152,7 +152,7 @@ console.log(noNumbers);
 */
 
 let isThisAnEmail = (stringaB) => {
-  const email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  const email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/; //controllo classico delle email
 
   return email.test(stringaB);
 }
@@ -167,6 +167,7 @@ console.log("Email: ", risultato);
 
 let whatDayIsIt = () => {
   let giorniSettimana = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"];
+  //mappiamo i giorni della settimana ricordandoci che con JS si parte da 0 e che indica la domenica 
   let dataCorrente = new Date();
   let numeroGiorno = dataCorrente.getDay();
   return giorniSettimana[numeroGiorno];
@@ -188,9 +189,9 @@ console.log("Oggi è:", giorno);
   }
 */
 
-let rollTheDices = (numLanci) => {
-  if (numLanci >= 1) {
-    let values = [];
+let rollTheDices = (numLanci) => { 
+  if (numLanci >= 1) { //ovviamente il parametro dato deve essere superiore a 1 altrimenti non verrà lanciato il dado
+    let values = []; //array dove verranno pushati gli elementi random
     let sum1 = 0;
 
     for (let i = 0; i < numLanci; i++) {
@@ -220,7 +221,8 @@ console.log(lancio);
 let howManyDays = (anno, mese, giorno) => {
   let dataInserita = new Date(anno, mese, giorno); 
   let dataCorrente = new Date();
-  let giorniDifferenza = Math.abs(dataInserita.getTime() - dataCorrente.getTime());
+  let giorniDifferenza = Math.abs(dataInserita.getTime() - dataCorrente.getTime()); //data attuale - data inserita
+  //Utilizziamo Math.abs per avere un numero senza il segno negativo
 
   let risultato = giorniDifferenza / (1000 * 60 * 60 * 24);
   risultato = parseInt(risultato);
@@ -240,6 +242,7 @@ let isTodayMyBirthday = (mese, giorno) => {
   let compleanno = new Date(currentDate.getFullYear(), mese, giorno);
 
   return currentDate.getMonth() === compleanno.getMonth() && currentDate.getDate() === compleanno.getDate();
+  //qui semplicemente fa un confronto per capire se il mese e il giorno corrente corrispondono con quelli del compleanno
 }
 
 let compleannoOggi = isTodayMyBirthday(0, 26); // 26 gennaio
@@ -372,7 +375,8 @@ const movies = [
 */
 
 let deleteProp = (obj, stringaC) => {
-  delete obj[stringaC]; //bisogna usare la bracket notation 
+  delete obj[stringaC]; //bisogna usare la bracket notation necessariamente
+  //un errore che facevo precedentemente era quello di usare la dot notation
   return obj;
 }
 
@@ -390,14 +394,14 @@ console.log("Oggetto obj con proprietà eliminata: ",eliminaProp);
 */
 
 let newestMovie = (movies) => {
-  if (movies.length === 0) {
+  if (movies.length === 0) { 
     return "Nessun film disponibile.";
   }
 
   let newest = movies[0];
 
   for (let i = 1; i < movies.length; i++) {
-    if (parseInt(movies[i].Year) > parseInt(newest.Year)) {
+    if (parseInt(movies[i].Year) > parseInt(newest.Year)) { //trova il film più recente
       newest = movies[i];
     }
   }
@@ -418,8 +422,7 @@ let countMovies = () => {
   return movies.length;
 }
 
-let numFilm = countMovies();
-console.log(numFilm);
+console.log("Numero di film: ", countMovies());
 
 /* ESERCIZIO 14
   Scrivi una funzione chiamata "onlyTheYears" che crea un array con solamente gli anni di uscita dei film contenuti nell'array "movies" fornito.
@@ -427,14 +430,13 @@ console.log(numFilm);
 
 let onlyTheYears = () => {
   let newArray = [];
-  movies.forEach(element => {
+  movies.forEach(element => { //il forEach (o il for) è necessario per selezionare tutti gli elementi dell'array
     newArray.push(element.Year);
   });
   return newArray;
 }
 
-let soloAnni = onlyTheYears();
-console.log(soloAnni);
+console.log("Array con solo gli anni di uscita dei film: ", onlyTheYears());
 
 
 /* ESERCIZIO 15
@@ -442,15 +444,14 @@ console.log(soloAnni);
 */
 
 let onlyInLastMillennium = (movies) => {
-  let newArray = movies.filter(element => {
+  let newArray = movies.filter(element => { //il filter viene usato qui per filtrare i film prodotti prima del 2000
     return parseInt(element.Year) <= 1999;
   });
 
   return newArray;
 }
 
-let filmUltimoMillennio = onlyInLastMillennium(movies);
-console.log(filmUltimoMillennio);
+console.log("Film prodotti nel millennio scorso: ", onlyInLastMillennium(movies));
 
 
 /* ESERCIZIO 16
@@ -458,27 +459,25 @@ console.log(filmUltimoMillennio);
 */
 
 let sumAllTheYears = () => {
-  return movies.reduce((acc, somma) => {
+  return movies.reduce((acc, somma) => { //usiamo reduce per velocizzare il proccesso di somma
     return acc += parseInt(somma.Year);
   }, 0 );
 }
 
-let sommaAnni = sumAllTheYears();
-console.log(sommaAnni);
+console.log("Somma degli anni dei film: ", sumAllTheYears());
 
 /* ESERCIZIO 17
   Scrivi una funzione chiamata "searchByTitle" che riceve una stringa come parametro e ritorna i film nell'array "movies" fornito che la contengono nel titolo.
 */
 
 let searchByTitle = (stringaD) => {
-  let newArray = movies.filter(element => {
-    return element.Title.includes(stringaD);
+  let newArray = movies.filter(element => { //filter per filtrare i film che includono...
+    return element.Title.includes(stringaD); //includes verifica se è inclusa la stringa inserita come parametro
   });
   return newArray;
 }
 
-let ricerca = searchByTitle("Avengers");
-console.log(ricerca);
+console.log(searchByTitle("Avengers"));
 
 
 /* ESERCIZIO 18
@@ -487,24 +486,23 @@ console.log(ricerca);
 */
 
 let searchAndDivide = (stringaE) => {
-  let result = {
-    match: [],
-    unmatch: [],
+  let result = { //oggetto dove verranno inserite le due categorie
+    match: [], //che matcha con la stringa
+    unmatch: [], //che non lo faS
   };
 
   movies.forEach(element => {
-    if (element.Title.includes(stringaE)) {
-      result.match.push(element);
+    if (element.Title.includes(stringaE)) { //include "Avengers"? se si, lo inserisce nel match
+      result.match.push(element); //attraverso il push 
     } else {
-      result.unmatch.push(element);
+      result.unmatch.push(element); //altrimenti lo pusha nell'altra categoria
     }
   });
 
   return result;
 }
 
-let risultatoRicerca = searchAndDivide("Avengers");
-console.log(risultatoRicerca);
+console.log(searchAndDivide("Avengers"));
 
 
 /* ESERCIZIO 19
@@ -512,7 +510,7 @@ console.log(risultatoRicerca);
 */
 
 let removeIndex = (numA) => {
-  movies.splice(numA, 1);
+  movies.splice(numA, 1); 
 }
 
 removeIndex(1);
@@ -526,21 +524,21 @@ console.log(movies);
   Scrivi una funzione per selezionare l'elemento dotato di id "container" all'interno della pagina.
 */
 
-let container = document.querySelector("#container");
+let container = document.querySelector("#container"); //selezione attraverso #id
 
 /* ESERCIZIO 21
   Scrivi una funzione per selezionare ogni tag <td> all'interno della pagina.
 */
 
-let td = document.querySelectorAll("td");
+let td = document.querySelectorAll("td"); 
 
 /* ESERCIZIO 22
   Scrivi una funzione che, tramite un ciclo, stampa in console il testo contenuto in ogni tag <td> all'interno della pagina.
 */
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() { //una volta avviato lo script, attua questa funzione:
   td.forEach(e => {
-    console.log(e.textContent);
+    console.log(e.textContent); //stampa il contenuto di td
   });
 });
 
@@ -553,7 +551,7 @@ document.addEventListener("DOMContentLoaded", function() {
   let links = document.querySelectorAll("a");
 
   links.forEach(e => {
-    e.style.backgroundColor = "red";
+    e.style.backgroundColor = "red"; //cambia colore sfondo ai links
   });
 });
 
@@ -566,9 +564,9 @@ document.addEventListener("DOMContentLoaded", function() {
   let lista = document.getElementById("myList");
   let nuovoElemento = document.createElement("li");
 
-  nuovoElemento.innerText = "PROVA";
+  nuovoElemento.innerText = "PROVA"; //aggiunge un nuovo li 
 
-  lista.appendChild(nuovoElemento);
+  lista.appendChild(nuovoElemento); //è necessario appenderlo altrimenti non sarà visibile
 });
 
 
@@ -580,7 +578,7 @@ document.addEventListener("DOMContentLoaded", function() {
   let lista = document.querySelectorAll("#myList");
   
   lista.forEach(e => {
-    e.innerText = "";
+    e.innerText = ""; //svuotiamo assegnando come testo una stringa vuota
   });
 });
 
@@ -593,7 +591,7 @@ document.addEventListener("DOMContentLoaded", function() {
   let tr = document.querySelectorAll("tr");
   
   tr.forEach(e => {
-    e.classList.add("test");
+    e.classList.add("test"); //aggiunge una classe .test
   });
 });
 
@@ -615,14 +613,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
 */
 
-let halfTree = (numero) => {
+let halfTree = (numero) => { //numero altezza
   let albero = '';
   
-  for (let i = 1; i <= numero; i++) {
+  for (let i = 1; i <= numero; i++) { //usiamo un ciclo (for) annidato per costituire la strurra
     let riga = '';
 
     for (let j = 0; j < i; j++) {
-      riga += '*';
+      riga += '*'; 
     }
 
     albero += riga + '\n';
@@ -647,24 +645,46 @@ console.log(halfTree(3));
 
 */
 
-/* let repeatString = (times) => {
+let ripeti = (str, times) => { //la difficoltà che ho riscontrato rispetto al precedente esercizio era la gestione degli spazi per centrare l'albero
   let result = '';
   for (let i = 0; i < times; i++) {
-    result += '*';
+    result += str;
   }
   return result;
 }
 
-let asterischi = repeatString(5); 
-console.log("Albero intero: ");
-console.log(asterischi);
- */
+let tree = (numero) => { //numero altezza
+  for (let i = 1; i <= numero; i++) {
+    let spazi = ripeti(' ', numero - i); //per lasciare gli spazi
+    let asterischi = ripeti('*', 2 * i - 1); //per ripetere gli asterischi
+    console.log(spazi + asterischi);
+  }
+}
+
+console.log("Albero intero di asterischi: ");
+tree(5);
+
+
 
 
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
 */
 
-let isItPrime = (valore) =>  {
+let isItPrime = (valore) =>  { //un numero è primo se è divisibile solo per 1 e per se stesso
+  if (valore <= 1) { //quindi se è minore di 1, già viene scartato a priori
+    return false;
+  }
 
+  for (let i = 2; i <= valore / 2; i++) { //'valore / 2' perché se in questo range nessun numero è divisibile per 2, il numero è primo
+    if (valore % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
 }
+
+// Esempio di utilizzo
+let numero = 13;
+console.log(isItPrime(numero)); // Restituirà true perché 13 è un numero primo
